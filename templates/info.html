@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Info</title>
+  </head>
+  <body>
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+{% if data.smtp_check %}
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Component</th>
+      <th scope="col">Description</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Email Address</td>
+      <td>{{data.email}}</td>
+     
+    </tr>
+     <tr>
+      <th scope="row">2</th>
+      <td>Exists</td>
+      <td>Yes</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>User</td>
+      <td>{{data.user}}</td>
+     
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Format</td>
+      {% if data.format_valid%}
+      <td>Valid</td>
+      {%else%}
+      <td>Not Valid</td>
+      {%endif%}
+      
+      
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>Disposable</td>
+       {% if data.disposable%}
+      <td>Valid</td>
+      {%else%}
+      <td>Not Valid</td>
+      {%endif%}
+      
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Score</td>
+      <td>{{data.score}}</td>
+      
+    </tr>
+  
+  </tbody>
+</table>
+{% else %}
+
+<h1 style="margin-left:15%">The following email address {{data.email}} is not valid</h1><br><br>
+<a href="/get"><button style="margin-left:45%">Check For Another Email</button></a>
+{% endif %}
+
+</body>
+</html>
